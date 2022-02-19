@@ -1,0 +1,73 @@
+" Author: Eastarpen
+" Version: 0.1
+" Email: eaststarpen@gmail.com
+" Desc: my ideavim config file
+"==========================================
+
+" set leader key
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+" search
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+" clear the highlighted search result
+nnoremap <Leader><CR> :nohlsearch<CR>
+
+set scrolloff=5
+
+set relativenumber
+set number
+
+" Insert mode shortcut
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
+" plugins
+
+" Idea specific settings ------------------
+
+" Quit normal mode
+nnoremap <Space>q  :action CloseProject<CR>
+nnoremap <Space>Q  :qa!<CR>
+
+
+" intellij built in key map
+
+nnoremap <leader>a :action GotoAction<CR>
+nnoremap <leader>b :action Bookmarks<CR>
+nnoremap <leader>c :action GotoClass<CR>
+"nnoremap <leader>e :action SearchEverywhere<CR>
+"nnoremap <leader>f :action FindInPath<CR>
+"nnoremap <leader>gc :action Git.CompareWithBranch<CR>
+"nnoremap <leader>ga :action Annotate<CR>
+"nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+"nnoremap <leader>r :action RecentFiles<CR>
+"nnoremap <leader>s :action SelectInProjectView<CR>
+
+"toggle something
+"toggle track vim action Id
+nnoremap ta :action VimFindActionIdAction<CR>
+
+" run and debug
+nnoremap ,d :action Debug<CR>
+nnoremap ,r :action Run<CR>
+nnoremap ,c :action CompileDirty<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,v :action ViewBreakpoints<CR>
+nnoremap ,s :action Stop<CR>
+
+" navigation
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+
+" PlugIn
+
+" IdeaVim-NERDTree
+set NERDTree
+
+nnoremap <C-N> :NERDTree<CR>

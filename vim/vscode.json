@@ -1,0 +1,14 @@
+{
+	/* vscode vim setting */
+    // leader
+    "vim.leader": "<space>",
+    // basic settings
+    "vim.smartRelativeLine": false,
+    // search
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    // plugins
+    "vim.easymotion": true,
+    "vim.surround": true,
+}
