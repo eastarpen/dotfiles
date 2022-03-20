@@ -1,0 +1,8 @@
+[Unit]
+Description="run jd_ShareCode.service every Monday"
+
+[Timer]
+OnCalendar=Mon, 00:01
+
+[Install]
+WantedBy=multi-user.target
