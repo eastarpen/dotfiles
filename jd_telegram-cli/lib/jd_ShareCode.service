@@ -1,5 +1,0 @@
-[Unit]
-Description='send jd share code to JDShareCodebot"
-
-[Service]
-ExecStart=/bin/bash /root/script/jd_ShareCode.sh
