@@ -1,0 +1,56 @@
+set mapleader=" "
+
+" display
+set scrolloff=10
+set showmode
+" enter or exit distraction free mode
+nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
+
+" vim search settings
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+" clear the highlighted search result
+nnoremap <Leader><CR> :nohlsearch<CR>
+
+" line number
+set relativenumber
+set number
+
+" Window Navigation
+" screen split
+map s <nop>
+nnoremap sl :action SplitVertically<CR>
+nnoremap sj :action SplitHorizontally<CR>
+nnoremap ss :action Unsplit<CR>
+" TODO
+nnoremap so :action MoveEditorToOppositeTabGroup<CR>
+
+" tab move
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+
+" source code editor
+set ideajoin
+set idearefactormode=keep
+
+" find error
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+
+nnoremap <Leader>gc :action GotoClass<CR>
+nnoremap <Leader>gd :action GotoDeclaration<CR>
+nnoremap <Leader>gf :action GotoFile<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+
+" running and debug
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,t :action ActivateRunToolWindow<CR>
+nnoremap ,u :action Rerun<CR>
+
+" Thanks
+" https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
+
