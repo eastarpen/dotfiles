@@ -1,18 +1,23 @@
-set mapleader=" "
+let mapleader=" "
 
 " display
 set scrolloff=10
 set showmode
+
+set list = true
 " enter or exit distraction free mode
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 
 " vim search settings
-set hlsearch
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
 " clear the highlighted search result
-nnoremap <Leader><CR> :nohlsearch<CR>
+" nnoremap <Leader><CR> :nohlsearch<CR>
+
+" project
+nnoremap Q :action CloseProject<CR>
 
 " line number
 set relativenumber
@@ -35,14 +40,29 @@ nnoremap <s-TAB> :action NextTab<CR>
 set ideajoin
 set idearefactormode=keep
 
+" map <c-j> to down, <c-k> to up
+" thanks for https://stackoverflow.com/questions/30149091/how-to-configure-in-ideavim-ctrl-n-and-ctrl-p-completion-from-vim
+ sethandler <c-j> a:vim
+ sethandler <c-k> a:vim
+ imap <C-j> <ESC>:action HippieCompletion<CR>a
+ imap <C-k> <ESC>:action HippieBackwardCompletion<CR>a
+
+ nnoremap <leader>c :action CommentByLineComment<CR>
+ nnoremap <Leader>=  :action ReformatCode<CR>
+
 " find error
 nnoremap ge :action GotoNextError<CR>
 nnoremap gE :action GotoPreviousError<CR>
 
-nnoremap <Leader>gc :action GotoClass<CR>
-nnoremap <Leader>gd :action GotoDeclaration<CR>
-nnoremap <Leader>gf :action GotoFile<CR>
-nnoremap <Leader>gi :action GotoImplementation<CR>
+" find file
+" search files
+nnoremap <Leader>f :action GotoFile<CR>
+" recent files
+nnoremap <c-r> :action RecentFiles<CR>
+
+nnoremap gc :action GotoClass<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
 
 " running and debug
 nnoremap ,r :action ContextRun<CR>
@@ -54,3 +74,6 @@ nnoremap ,u :action Rerun<CR>
 " Thanks
 " https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
 
+" Emulated Plugin
+Plug 'machakann/vim-highlightedyank'
+Plug 'preservim/nerdtree'
