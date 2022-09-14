@@ -4,6 +4,9 @@
 if uname -r |grep -iq "WSL2";
 then
     export winip=`ipconfig.exe | grep 'Wireless LAN adapter Wi-Fi' -A6 | cut -d":" -f 2| tail -3| head -1| sed -e 's/\s*//g'`
+
+    # thanks for this blog 
+    # https://pscheit.medium.com/get-the-ip-address-of-the-desktop-windows-host-in-wsl2-7dc61653ad51
 fi
 
 # proxy settings
