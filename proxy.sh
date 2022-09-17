@@ -28,4 +28,4 @@ function proxy_off(){
 }
 
 # open proxy_on defaulted
-proxy_on()
+proxy_on() > nul
