@@ -2,10 +2,16 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 local map = vim.api.nvim_set_keymap
--- 复用 opt 参数
+-- key binds options
 local opt = {noremap = true, silent = true }
 
 local pluginKeys = {}
+
+-- Telescope
+-- find file
+map("n", "<leader>f", ":Telescope find_files<CR>", opt)
+map("n", "<leader>ff", ":Telescope live_grep<CR>", opt)
+map("n", "<C-r>", ":Telescope oldfiles<CR>", opt)
 
 -- cpp compile and run
 map("n", ",c", ":!g++ -g % -o %<<CR>", opt)
@@ -39,26 +45,43 @@ pluginKeys.mapLSP = function(mapbuf)
 
 end
 
+pluginKeys.telescopeList = {
+  i = {
+    -- 上下移动
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    -- 历史记录
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- 关闭窗口
+    ["<C-c>"] = "close",
+    -- 预览窗口上下滚动
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
+}
+
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
     return {
+        -- TODO
         -- 出现补全
-        ["<C-Space"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
         -- 取消
-        ["<C-Space"] = cmp.mapping({
+        ["<S-Space>"] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close()
         }),
-        -- 上一个
+        -- previous
         ["<C-k>"] = cmp.mapping.select_prev_item(),
-        -- 下一个
+        -- next
         ["<C-j>"] = cmp.mapping.select_next_item(),
-        -- 确认
+        -- confirm
         ["<CR>"] = cmp.mapping.confirm({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace
         }),
-        -- 如果窗口内容太多，可以滚动
+        -- scroll window
         ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
     }

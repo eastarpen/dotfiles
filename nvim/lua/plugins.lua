@@ -8,6 +8,17 @@ packer.startup(
    --------------------- Themes --------------------
    use("folke/tokyonight.nvim")
 
+   --------------------- Dashboard --------------------
+    use("glepnir/dashboard-nvim")
+
+   --------------------- Fuzzy find --------------------
+   -- Telescope
+   -- after install, run :checkhealth telescope to install ripgrep and fd
+   -- project addresses are below
+   -- https://github.com/BurntSushi/ripgrep#installation
+   -- https://github.com/sharkdp/fd#installation
+   use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+
    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
    --------------------- LSP --------------------
