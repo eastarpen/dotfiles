@@ -12,7 +12,7 @@ local M = {}
 M.run_term = function(command, ...)
     vim.cmd('term')
     local terminal_id = eval('b:terminal_job_id')
-    vim.api.nvim_chan_send(terminal_id, string.format(command .. '\n', ...))
+    vim.api.nvim_chan_send(terminal_id, string.format(command .. '\n\r', ...))
 
     -- nnoremap({ 'q', '<cmd>q<CR>', buffer = true })
     vim.cmd('stopinsert')
@@ -34,7 +34,8 @@ M.exec = function()
         local output = vim.fn.expand('%:t:r')
         local command = 'g++ -g %s -o %s && ./%s; rm %s'
         if isWin == 1 then
-            command = 'g++ -g %s -o %s.exe && %s.exe; rm %s.exe'
+            output = output .. '.exe'
+            command = 'g++ -g %s -o %s && %s; del %s'
         end
         M.run_term(command, file, output, output, output)
     end
