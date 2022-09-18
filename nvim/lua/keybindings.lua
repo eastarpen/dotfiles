@@ -13,10 +13,12 @@ map("n", "<leader>f", ":Telescope find_files<CR>", opt)
 map("n", "<leader>ff", ":Telescope live_grep<CR>", opt)
 map("n", "<C-r>", ":Telescope oldfiles<CR>", opt)
 
--- cpp compile and run
-map("n", ",c", ":!g++ -g % -o %<<CR>", opt)
-map("n", ",r", ":!./%<<CR>", opt)
-map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>", opt)
+-- compile
+local runner = "require('coderunner')"
+-- map("n", ",c", ":!g++ -g % -o %<<CR>", opt)
+map("n", ",r", "<cmd>lua " .. runner ..".exec()<cr>", opt)
+-- map("n", ",r", , opt)
+-- map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>", opt)
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
@@ -32,9 +34,9 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
   -- diagnostic
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  mapbuf("n", "gE", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  mapbuf("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+  -- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   -- 没用到
   -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
   -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)

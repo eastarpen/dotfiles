@@ -20,4 +20,4 @@ require("lsp.cmp")
 require("lsp.ui")
 
 --compile 
-require("compile")
+require("coderunner")
