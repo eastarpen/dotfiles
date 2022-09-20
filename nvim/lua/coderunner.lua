@@ -5,7 +5,6 @@
 -- https://github.com/seblj/dotfiles/blob/6e3fc53daa46d520f777679d7e68b39289598360/nvim/lua/seblj/utils/init.lua#L113
 
 local eval = vim.api.nvim_eval
-local nnoremap = vim.keymap.nnoremap
 
 local M = {}
 
@@ -14,7 +13,6 @@ M.run_term = function(command, ...)
     local terminal_id = eval('b:terminal_job_id')
     vim.api.nvim_chan_send(terminal_id, string.format(command .. '\n\r', ...))
 
-    -- nnoremap({ 'q', '<cmd>q<CR>', buffer = true })
     vim.cmd('stopinsert')
 end
 
@@ -28,14 +26,19 @@ M.exec = function()
     elseif ft == 'python' then
         vim.cmd('sp')
         M.run_term('python3 %s', vim.fn.expand('%'))
-    elseif ft == 'cpp' then
+    elseif ft == 'cpp' or ft == 'c' then
         vim.cmd('sp')
         local file = vim.fn.expand('%')
         local output = vim.fn.expand('%:t:r')
-        local command = 'g++ -g %s -o %s && ./%s; rm %s'
+        local command = ' -g %s -o %s && ./%s; rm %s'
         if isWin == 1 then
             output = output .. '.exe'
-            command = 'g++ -g %s -o %s && %s; del %s'
+            command = ' -g %s -o %s && %s; del %s'
+        end
+        if ft == 'cpp' then
+            command = 'g++' .. command
+        else
+            command = 'gcc' .. command
         end
         M.run_term(command, file, output, output, output)
     end

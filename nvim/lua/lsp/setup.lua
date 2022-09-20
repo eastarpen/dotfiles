@@ -1,7 +1,7 @@
 local lsp_installer = require("nvim-lsp-installer")
 
 -- set your language in servers
--- key see the site below
+-- dictionary key can be found in this site
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
   sumneko_lua = require("lsp.config.lua"),        -- lua/lsp/config/lua.lua

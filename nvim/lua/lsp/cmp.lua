@@ -1,60 +1,51 @@
 local cmp = require("cmp")
 
 cmp.setup({
-    -- 指定 snippet 引擎
+    -- TODO preselect
+    preselect = cmp.PreselectMode.Item,
     snippet = {
         expand = function(args)
-            -- For `vsnip` users.
+            -- use vsnip
             vim.fn["vsnip#anonymous"](args.body)
-
-            -- For `luasnip` users.
-            -- require('luasnip').lsp_expand(args.body)
-
-            -- For `ultisnips` users.
-            -- vim.fn["UltiSnips#Anon"](args.body)
-
-            -- For `snippy` users.
-            -- require'snippy'.expand_snippet(args.body)
         end,
     },
     -- lsp source
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        -- For vsnip users.
-        { name = "vsnip" },
-
-        -- For luasnip users.
-        -- { name = 'luasnip' },
-
-        --For ultisnips users.
-        -- { name = 'ultisnips' },
-
-        -- -- For snippy users.
-        -- { name = 'snippy' },
-    }, { 
-        { name = "buffer" }, 
-        { name = "path" }
+        { name = "vsnip"    },
+        { name = "buffer"   },
+        { name = "path"     }
     }),
 
     -- keybindings
     mapping = require("keybindings").cmp(cmp),
+
 })
 
--- find mode source
+-- Use buffer source for `/` 
+-- (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {
-    mapping = cmp.mapping.preset.cmdline(),
+    --mapping = require("keybindings").cmp(cmp),
     sources = {
         { name = "buffer" },
     },
 })
 
--- command line source
+-- TODO bug typing ':!' cause stuck
+-- https://github.com/hrsh7th/nvim-cmp/issues/821
+-- https://github.com/hrsh7th/cmp-cmdline/issues/24
+
+-- Use cmdline & path source for ':' 
+---- (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
+    --mapping = require("keybindings").cmp(cmp),
     sources = cmp.config.sources({
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
+        { name = "path"    },
+    },{
+        -- Do not show completion for words starting with '!'
+        { name = "cmdline", keyword_pattern = [[\!\@<!\w*]]},
+
     }),
 })
+
 

@@ -14,10 +14,7 @@ require("plugin-config.nvim-treesitter")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.telescope")
 
---lsp 
+----lsp 
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
-
---compile 
-require("coderunner")
