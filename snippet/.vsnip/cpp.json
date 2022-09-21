@@ -1,0 +1,79 @@
+{
+    "for": {
+        "prefix": "for",
+        "body": [
+            "for (${1:int} ${2:i} = 1; $2 <= ${3:length}; ++$2) $0"
+        ],
+        "description": "for(int i = 1; i <= length; ++i)"
+    },
+    "for0": {
+        "prefix": "for0",
+        "body": [
+            "for (${1:int} ${2:i} = 0; $2 < ${4:length}; ++$2) $0"
+        ],
+        "description": "for(int i = 0; i < length; ++i)"
+    },
+    "forr": {
+        "prefix": "forr",
+        "body": [
+            "for (${1:int} ${2:i} = ${3:length}; $2; --$2) $0"
+        ],
+        "description": "for(int i = length; i; --i)"
+    },
+    "forr0": {
+        "prefix": "forr",
+        "body": [
+            "for (${1:int} ${2:i} = ${3:length}; $2 >= 0; --$2) $0"
+        ],
+        "description": "for(int i = length - 1; i >= 0; --i)"
+    },
+    "readarr": {
+        "prefix": "readarr",
+        "body": [
+            "for(int i = 1; i <= ${1:n}; ++i) scanf(\"%d\", &$2[i]);$0"
+        ],
+        "description": "read arrary"
+    },
+    "readarr0": {
+        "prefix": "readarr0",
+        "body": [
+            "for(int i = 0; i < ${1:n}; ++i) scanf(\"%d\", &$2[i]);$0"
+        ],
+        "description": "read arrary first index 0"
+    },
+    "foreach": {
+        "prefix": "foreach",
+        "body": ["for(${1:auto} ${2:var} : ${3:collection_to_loop})", "{", "\t$0", "}"],
+        "description": "Code snippet for range-based for loop (c++11) statement"
+    },
+    "struct": {
+        "prefix": "struct",
+        "body": ["struct ${1:MyStruct}", "{", "\t$0", "};"],
+        "description": "Code snippet for struct"
+    },
+    "printf": {
+        "prefix": "printf",
+        "body": ["printf(\"$1\\n\"$2);$0"],
+        "description": "Generic printf() snippet"
+    },
+    "scanf": {
+        "prefix": "scanf",
+        "body": ["scanf(\"$1\"$2);$0"],
+        "description": "Generic scanf() snippet"
+    },
+    "race code template": {
+        "prefix": "mymain",
+        "body": [
+            "#include<cstdio>",
+            "using namespace std;\n",
+            "const int MAXN = ${1:1}e${2:5};\n",
+            "$0\n",
+            "int main (void)",
+            "{",
+                "\tfreopen(\"data.in\", \"r\", stdin);",
+                "\treturn 0;",
+                "}"
+        ],
+        "description": "race code template"
+    }
+}
