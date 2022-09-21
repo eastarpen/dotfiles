@@ -86,25 +86,47 @@ pluginKeys.mapLSP = function(mapbuf)
 end
 
 -------------------------  Nvim-cmp  ------------------------------------------
+-- use for snippet jump
+local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 pluginKeys.cmp = function(cmp)
     return {
+        -- snippet jump
+        ['<Tab>'] = cmp.mapping(
+            function (fallback)
+                --if vim.fn["vsnip#available"](1) == 1 then
+                    feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                --else
+                    --fallback()
+                --end
+            end, {"i", "s"}
+        ),
+        ['<S-Tab>'] = cmp.mapping(
+            function (fallback)
+                --if vim.fn["vsnip#jumpable"](-1) == 1 then
+                    feedkey("<Plug>(vsnip-jump-prev)", "")
+                --end
+            end, {"i", "s"}
+        ),
         -- show and close completion window
         ['<C-Space>'] = cmp.mapping(
-            function (fallback)
-                if cmp.visible() then
-                    cmp.abort()
-                else
-                    cmp.complete()
-                end
-            end, {'i', 'c'}
+        function (fallback)
+            if cmp.visible() then
+                cmp.abort()
+            else
+                cmp.complete()
+            end
+        end, {'i', 'c'}
         ),
         -- next
         ["<C-j>"] = cmp.mapping(
-            cmp.mapping.select_next_item(), {'i', 'c'}
+        cmp.mapping.select_next_item(), {'i', 'c'}
         ),
         -- previous
         ["<C-k>"] = cmp.mapping(
-            cmp.mapping.select_prev_item(), {'i', 'c'}
+        cmp.mapping.select_prev_item(), {'i', 'c'}
         ),
         -- confirm
         ["<CR>"] = cmp.mapping.confirm({

@@ -30,6 +30,7 @@ packer.startup(
    use("windwp/nvim-autopairs")
    -- nvim-cmp
    use("hrsh7th/nvim-cmp")
+   use("hrsh7th/cmp-vsnip")
    -- snippet
    use("hrsh7th/vim-vsnip")
    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
