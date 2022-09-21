@@ -7,3 +7,4 @@ my dotfiles
 - [ ] neovim file tree
 - [ ] neovim indent line
 - [ ] neovim change current working directory
+- [ ] README
