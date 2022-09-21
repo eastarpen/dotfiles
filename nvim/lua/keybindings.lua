@@ -63,7 +63,8 @@ pluginKeys.telescopeList = {
 -------------------------  CodeRunner  ----------------------------------------
 local runner = "require('coderunner')"
 map("n", ",r", "<cmd>lua " .. runner ..".exec()<cr>", opt)
--- map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>", opt)
+map("n", ",d", "<cmd>lua " .. runner ..".debug()<cr>", opt)
+map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>", opt)
 
 -------------------------  Nvim LSP  ------------------------------------------
 
