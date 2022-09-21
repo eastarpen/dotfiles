@@ -11,9 +11,13 @@ cmp.setup({
     },
 
     -- 补全源
-    sources = cmp.config.sources(
-       {{ name = "nvim_lsp" }, { name = "vsnip" }},
-        {{ name = "buffer"   }, { name = "path"  }}
+    sources = cmp.config.sources( {
+        { name = "vsnip"   },
+        { name = "nvim_lsp"},
+    }, {
+        { name = "buffer"  },
+        { name = "path"    }
+    }
     ),
 
     -- keybindings
