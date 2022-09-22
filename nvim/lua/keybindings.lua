@@ -27,17 +27,22 @@ map('n', '<S-TAB>', 'gT', opt)
 -- screeen split
 -- Resize all splits
 map('n', '<leader>=', '<C-w>=', opt)
+-- screen split
+map('n', 'sj', '<cmd>set splitbelow<CR>:sp<CR>', opt)
+map('n', 'sk', '<cmd>set nosplitbelow<CR>:sp<CR>', opt)
+map('n', 'sl', '<cmd>set splitright<CR>:vsp<CR>', opt)
+map('n', 'sh', '<cmd>set nosplitright<CR>:vsp<CR>', opt)
 -- Navigate split
 map('n', '<C-h>', '<C-w>h', opt)
 map('n', '<C-j>', '<C-w>j', opt)
 map('n', '<C-k>', '<C-w>k', opt)
 map('n', '<C-l>', '<C-w>l', opt)
--- TODO Resize split right
--- local resize = require('util.resize')
--- keymap('n', '<Right>', resize.resize_right, { desc = 'Resize split right' })
--- keymap('n', '<Left>', resize.resize_left, { desc = 'Resize split left' })
--- keymap('n', '<Up>', resize.resize_up, { desc = 'Resize split up' })
--- keymap('n', '<Down>', resize.resize_down, { desc = 'Resize split down' })
+-- resize split **Not perfect** 
+map('n', '<up>'   , '<cmd>res +2<CR>'         , opt)
+map('n', '<down>' , '<cmd>res -2<CR>'         , opt)
+map('n', '<left>' , '<cmd>vertical res -2<CR>', opt)
+map('n', '<right>', '<cmd>vertical res +2<CR>', opt)
+
 
 -------------------------  Telescope  -----------------------------------------
 -- find file
