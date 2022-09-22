@@ -14,6 +14,8 @@ map('n', '<leader>i', 'gg=G', opt)
 -- For <C-r> used for telescope(recent files), map 'U' to "undo undo"
 map('n', 'U', '<C-r>', opt)
 
+map('n', 'cr', '<cmd>lua require("util.cdir").croot()<cr>', opt)
+
 -------------------------  Window Navigation  ---------------------------------
 -- about tab
 map('n', '<C-t>', ':tabedit<CR>', opt)
@@ -64,7 +66,7 @@ pluginKeys.telescopeList = {
 local runner = "require('coderunner')"
 map("n", ",r", "<cmd>lua " .. runner ..".exec()<cr>", opt)
 map("n", ",d", "<cmd>lua " .. runner ..".debug()<cr>", opt)
-map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>", opt)
+map("n", "<leader>d", ":vsplit<CR>:e data.in<CR>ggdG", opt)
 
 -------------------------  Nvim LSP  ------------------------------------------
 
