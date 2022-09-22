@@ -5,8 +5,11 @@ packer.startup(
    --------------------- Packer --------------------
    use 'wbthomason/packer.nvim'
 
-   --------------------- Themes --------------------
+   --------------------- Display --------------------
+   -- Themes
    use("folke/tokyonight.nvim")
+   -- Indent line
+   use("lukas-reineke/indent-blankline.nvim")
 
    --------------------- Dashboard --------------------
     use("glepnir/dashboard-nvim")

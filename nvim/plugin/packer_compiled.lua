@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/eastarpen/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/eastarpen/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/eastarpen/.local/share/nvim/site/pack/packer/start/nvim-autopairs",

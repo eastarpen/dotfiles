@@ -8,6 +8,7 @@ require('plugins')
 require("colorscheme")
 
 require("plugin-config.dashboard")
+require("plugin-config.indent-blankline")
 
 require("plugin-config.nvim-treesitter")
 
