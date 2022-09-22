@@ -61,6 +61,14 @@
         "body": ["scanf(\"$1\"$2);$0"],
         "description": "Generic scanf() snippet"
     },
+    "scanfn": {
+        "prefix": "scanfn",
+        "body": ["scanf(\"%d\", &n);$0"]
+    },
+    "scanfnm": {
+        "prefix": "scanfnm",
+        "body": ["scanf(\"%d %d\", &n, &m);$0"]
+    },
     "race code template": {
         "prefix": "mymain",
         "body": [
