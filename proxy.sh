@@ -1,14 +1,5 @@
 # add these script fragments to your .bashrc or .zshrc or other shell profile
 
-# check whether this system is wsl2
-if uname -r |grep -iq "WSL2";
-then
-    export winip=`ipconfig.exe | grep 'Wireless LAN adapter Wi-Fi' -A6 | cut -d":" -f 2| tail -3| head -1| sed -e 's/\s*//g'`
-
-    # thanks for this blog 
-    # https://pscheit.medium.com/get-the-ip-address-of-the-desktop-windows-host-in-wsl2-7dc61653ad51
-fi
-
 # whether npm exists
 npm_exist=true
 
@@ -16,8 +7,14 @@ if ! command -v npm &> /dev/null
 then
     $npm_exist=false
 fi
+
 # proxy settings
 function proxy_on() {
+    # check whether this system is wsl2
+    if uname -r |grep -iq "WSL2";
+    then
+        export winip=`ipconfig.exe| grep 'Wi-Fi' -A 1000| grep 'IPv4 Address' -m 1| cut -d":" -f 2|sed -e 's/\s*//g'`
+    fi
     # clash port
     address="http://$winip:7890"
     export http_proxy=$address
