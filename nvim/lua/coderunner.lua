@@ -33,10 +33,10 @@ M.exec = function()
         vim.cmd('sp')
         local file = vim.fn.expand('%')
         local output = vim.fn.expand('%:t:r')
-        local command = ' -g %s -o %s && ./%s > data.out; rm %s'
+        local command = ' -g %s -o %s && ./%s > data.out < data.in; rm %s'
         if isWin == 1 then
             output = output .. '.exe'
-            command = ' -g %s -o %s && %s > data.out; del %s'
+            command = ' -g %s -o %s && %s > data.out < data.in; del %s'
         end
         if ft == 'cpp' then
             command = 'g++' .. command
